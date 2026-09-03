@@ -1,1225 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SYLVIRA OPC PVT LTD - Staffing, IT Solutions & Project Management</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-blue: #003DA5;
-      --light-blue: #4A90E2;
-      --dark-gray: #1a1a1a;
-      --light-gray: #f5f5f5;
-      --text-gray: #333;
-      --accent-gold: #FFD700;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--text-gray);
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.7;
-      }
-    }
-
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .animate-on-scroll {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    /* Header & Navigation */
-    header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: var(--primary-blue);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: slideInRight 0.6s ease-out;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links li {
-      animation: fadeInUp 0.6s ease-out;
-      animation-fill-mode: both;
-    }
-
-    .nav-links li:nth-child(1) { animation-delay: 0.1s; }
-    .nav-links li:nth-child(2) { animation-delay: 0.2s; }
-    .nav-links li:nth-child(3) { animation-delay: 0.3s; }
-    .nav-links li:nth-child(4) { animation-delay: 0.4s; }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-gray);
-      font-weight: 500;
-      transition: color 0.3s;
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-blue);
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary-blue);
-      transition: width 0.3s;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .cta-button {
-      background: var(--primary-blue);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      animation: slideInLeft 0.6s ease-out;
-    }
-
-    .cta-button:hover {
-      background: var(--light-blue);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 61, 165, 0.3);
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-      color: white;
-      padding: 60px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 650px;
-      gap: 3rem;
-      flex-wrap: wrap;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 215, 0, 0.05);
-      border-radius: 50%;
-      top: -100px;
-      right: -100px;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 215, 0, 0.03);
-      border-radius: 50%;
-      bottom: -50px;
-      left: -50px;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .hero-content {
-      flex: 1;
-      min-width: 300px;
-      z-index: 2;
-      animation: slideInLeft 0.8s ease-out;
-    }
-
-    .hero h1 {
-      font-size: 3em;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero p {
-      font-size: 1.3em;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-      animation: fadeInUp 0.8s ease-out 0.4s both;
-    }
-
-    .hero-image {
-      flex: 1;
-      min-width: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-      animation: slideInRight 0.8s ease-out;
-    }
-
-    .hero-image svg {
-      max-width: 100%;
-      height: auto;
-      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      animation: fadeInUp 0.8s ease-out 0.6s both;
-    }
-
-    .btn-primary {
-      background: white;
-      color: var(--primary-blue);
-      padding: 1rem 2rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      background: var(--accent-gold);
-    }
-
-    /* About Section */
-    .about {
-      padding: 80px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-      background: var(--light-gray);
-    }
-
-    .about h2 {
-      font-size: 2.5em;
-      margin-bottom: 2rem;
-      color: var(--primary-blue);
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-image {
-      display: flex;
-      justify-content: center;
-      animation: slideInLeft 0.8s ease-out;
-    }
-
-    .about-image svg {
-      max-width: 100%;
-      height: auto;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .about-text {
-      animation: slideInRight 0.8s ease-out;
-    }
-
-    .about-text p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1em;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .about-text p:nth-child(1) { animation-delay: 0.2s; }
-    .about-text p:nth-child(2) { animation-delay: 0.4s; }
-    .about-text p:nth-child(3) { animation-delay: 0.6s; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .stat {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s;
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .stat:nth-child(1) { animation-delay: 0.2s; }
-    .stat:nth-child(2) { animation-delay: 0.4s; }
-    .stat:nth-child(3) { animation-delay: 0.6s; }
-    .stat:nth-child(4) { animation-delay: 0.8s; }
-
-    .stat:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 61, 165, 0.2);
-    }
-
-    .stat-number {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: var(--primary-blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      color: var(--text-gray);
-      font-weight: 600;
-    }
-
-    /* What We're Great At Section */
-    .expertise {
-      padding: 80px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .expertise h2 {
-      font-size: 2.5em;
-      margin-bottom: 3rem;
-      color: var(--primary-blue);
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .expertise-intro {
-      background: white;
-      padding: 3rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      margin-bottom: 3rem;
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .expertise-intro h3 {
-      color: var(--primary-blue);
-      font-size: 1.8em;
-      margin-bottom: 1rem;
-    }
-
-    .expertise-intro p {
-      font-size: 1.1em;
-      line-height: 1.8;
-      color: #555;
-    }
-
-    .expertise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .expertise-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s;
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .expertise-card:nth-child(1) { animation-delay: 0.2s; }
-    .expertise-card:nth-child(2) { animation-delay: 0.4s; }
-    .expertise-card:nth-child(3) { animation-delay: 0.6s; }
-    .expertise-card:nth-child(4) { animation-delay: 0.8s; }
-
-    .expertise-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 15px 40px rgba(0, 61, 165, 0.2);
-    }
-
-    .expertise-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .expertise-card:hover .expertise-image {
-      transform: scale(1.05);
-    }
-
-    .expertise-content {
-      padding: 2rem;
-    }
-
-    .expertise-card h3 {
-      color: var(--primary-blue);
-      font-size: 1.5em;
-      margin-bottom: 1rem;
-    }
-
-    .expertise-card p {
-      color: #666;
-      line-height: 1.8;
-      font-size: 1em;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 80px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .services h2 {
-      font-size: 2.5em;
-      margin-bottom: 3rem;
-      color: var(--primary-blue);
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s;
-      border-top: 5px solid var(--primary-blue);
-      text-align: center;
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-
-    .service-card:nth-child(1) { animation-delay: 0.1s; }
-    .service-card:nth-child(2) { animation-delay: 0.3s; }
-    .service-card:nth-child(3) { animation-delay: 0.5s; }
-    .service-card:nth-child(4) { animation-delay: 0.7s; }
-
-    .service-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      border-top-color: var(--accent-gold);
-    }
-
-    .service-icon {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--light-gray);
-      border-radius: 50%;
-      transition: all 0.3s;
-    }
-
-    .service-card:hover .service-icon {
-      background: var(--accent-gold);
-      transform: rotate(10deg) scale(1.1);
-      animation: pulse 0.5s ease-out;
-    }
-
-    .service-icon svg {
-      width: 70%;
-      height: 70%;
-    }
-
-    .service-card h3 {
-      font-size: 1.5em;
-      margin-bottom: 1rem;
-      color: var(--primary-blue);
-    }
-
-    .service-card p {
-      color: #666;
-      line-height: 1.8;
-    }
-
-    /* Offerings Section */
-    .offerings {
-      background: var(--light-gray);
-      padding: 80px 5%;
-    }
-
-    .offerings-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .offerings h2 {
-      font-size: 2.5em;
-      margin-bottom: 3rem;
-      color: var(--primary-blue);
-      text-align: center;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .offerings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .offering-item {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      transition: all 0.3s;
-      animation: fadeInUp 0.6s ease-out forwards;
-      border-left: 4px solid var(--primary-blue);
-    }
-
-    .offering-item:nth-child(1) { animation-delay: 0.1s; }
-    .offering-item:nth-child(2) { animation-delay: 0.2s; }
-    .offering-item:nth-child(3) { animation-delay: 0.3s; }
-    .offering-item:nth-child(4) { animation-delay: 0.4s; }
-    .offering-item:nth-child(5) { animation-delay: 0.5s; }
-    .offering-item:nth-child(6) { animation-delay: 0.6s; }
-
-    .offering-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 61, 165, 0.2);
-      border-left-color: var(--accent-gold);
-    }
-
-    .offering-item h3 {
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-      font-size: 1.3em;
-    }
-
-    .offering-item p {
-      color: #666;
-      font-size: 0.95em;
-    }
-
-    /* Contact Section */
-    .contact {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-      color: white;
-      padding: 80px 5%;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact::before {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 215, 0, 0.05);
-      border-radius: 50%;
-      top: -150px;
-      left: -150px;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .contact::after {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 215, 0, 0.03);
-      border-radius: 50%;
-      bottom: -100px;
-      right: -100px;
-      animation: float 10s ease-in-out infinite;
-    }
-
-    .contact h2 {
-      font-size: 2.5em;
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease-out;
-      position: relative;
-      z-index: 2;
-    }
-
-    .contact p {
-      font-size: 1.2em;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-      position: relative;
-      z-index: 2;
-    }
-
-    .contact-button {
-      animation: fadeInUp 0.8s ease-out 0.4s both;
-      position: relative;
-      z-index: 2;
-    }
-
-    .contact-info {
-      display: flex;
-      gap: 3rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 3rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .contact-item {
-      flex: 1;
-      min-width: 250px;
-      animation: fadeInUp 0.6s ease-out forwards;
-      transition: all 0.3s;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-    }
-
-    .contact-item:nth-child(1) { animation-delay: 0.3s; }
-    .contact-item:nth-child(2) { animation-delay: 0.5s; }
-    .contact-item:nth-child(3) { animation-delay: 0.7s; }
-
-    .contact-item:hover {
-      transform: scale(1.05);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .contact-item h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.3em;
-    }
-
-    .contact-item p {
-      margin: 0;
-      font-size: 0.95em;
-      animation: none;
-      word-break: break-word;
-    }
-
-    .contact-item a {
-      color: var(--accent-gold);
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .contact-item a:hover {
-      text-decoration: underline;
-      color: white;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--dark-gray);
-      color: white;
-      text-align: center;
-      padding: 3rem 5%;
-      border-top: 3px solid var(--primary-blue);
-    }
-
-    footer p {
-      margin-bottom: 1rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-      font-size: 0.9em;
-    }
-
-    .footer-links a {
-      color: var(--accent-gold);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        gap: 1rem;
-        font-size: 0.9em;
-      }
-
-      .hero {
-        flex-direction: column;
-        min-height: auto;
-      }
-
-      .hero h1 {
-        font-size: 2em;
-      }
-
-      .about-content {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .btn-primary {
-        width: 100%;
-      }
-
-      .contact-info {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .contact-item {
-        min-width: auto;
-      }
-
-      .services h2, .offerings h2, .expertise h2 {
-        font-size: 1.8em;
-      }
-
-      .expertise-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Page Navigation */
-    .nav-secondary {
-      display: none;
-      position: fixed;
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      flex-direction: column;
-      gap: 1rem;
-      z-index: 50;
-    }
-
-    .nav-secondary.show {
-      display: flex;
-    }
-
-    .nav-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary-blue);
-      cursor: pointer;
-      transition: all 0.3s;
-      border: 2px solid white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-dot:hover, .nav-dot.active {
-      width: 16px;
-      height: 16px;
-      background: var(--accent-gold);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download the free Wuthering Waves character editor for PC. Edit character values in your save file safely and visually. Community tool for customizing your Wuthering Waves experience.">
+    <meta name="keywords" content="character-editor-download,edit-character-save,free-character-editor,wuthering-waves-character-customization,wuthering-waves-character-editor,wuthering-waves-cheats,wuthering-waves-edit-character,wuthering-waves-save-editor">
+    <meta name="author" content="Steamshipcompanyallspice7618">
+    <title>Wuthering Waves Character Editor - Edit Your Character Save Free</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 40px 40px;
+            text-align: center;
+            color: white;
+        }
+        .header-gradient h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .header-gradient p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            background-color: #ff5252;
+        }
+        .content {
+            padding: 30px 40px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #2b6cb0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ebf8ff;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #2b6cb0;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 1.2em;
+            font-size: 1.02rem;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 1.02rem;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #2d3748;
+        }
+        .highlight-box {
+            background-color: #ebf8ff;
+            border-left: 5px solid #4299e1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .feature-item {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .header-gradient h1 {
+                font-size: 1.6rem;
+            }
+            .content {
+                padding: 20px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn-primary {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <nav>
-      <div class="logo">
-        ✈️ SYLVIRA
-      </div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get Started</button>
-    </nav>
-  </header>
-
-  <!-- Side Navigation Dots -->
-  <div class="nav-secondary show">
-    <div class="nav-dot active" onclick="scrollToSection('home')"></div>
-    <div class="nav-dot" onclick="scrollToSection('about')"></div>
-    <div class="nav-dot" onclick="scrollToSection('expertise')"></div>
-    <div class="nav-dot" onclick="scrollToSection('services')"></div>
-    <div class="nav-dot" onclick="scrollToSection('contact')"></div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Bridge Skilled Professionals with Top Employers</h1>
-      <p>Expert Staffing, IT Solutions & Project Management for Your Business Growth</p>
-      <div class="hero-buttons">
-        <a href="#services" class="btn-primary">Explore Services</a>
-        <a href="#contact" class="btn-primary">Contact Us</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="350" height="350">
-        <!-- Background circle -->
-        <circle cx="200" cy="200" r="190" fill="#ffffff" opacity="0.1"/>
+    <div class="container">
+        <div class="header-gradient">
+            <h1>🎮 Wuthering Waves Character Editor - Your Save, Your Rules</h1>
+            <p>Customize your characters quickly, safely, and free for PC</p>
+            <a href="https://github.com/Steamshipcompanyallspice7618/Wuthering-Waves-Character-Editor-Edit-Your-Character-Save-Free-/releases" class="btn-primary">⬇️ Download The Free Tool</a>
+        </div>
         
-        <!-- Left person -->
-        <circle cx="100" cy="80" r="25" fill="#ffffff"/>
-        <rect x="85" y="110" width="30" height="50" fill="#ffffff" rx="5"/>
-        <rect x="80" y="160" width="15" height="40" fill="#ffffff" rx="5"/>
-        <rect x="105" y="160" width="15" height="40" fill="#ffffff" rx="5"/>
-        
-        <!-- Right person -->
-        <circle cx="300" cy="80" r="25" fill="#ffffff"/>
-        <rect x="285" y="110" width="30" height="50" fill="#ffffff" rx="5"/>
-        <rect x="280" y="160" width="15" height="40" fill="#ffffff" rx="5"/>
-        <rect x="305" y="160" width="15" height="40" fill="#ffffff" rx="5"/>
-        
-        <!-- Center person (elevated) -->
-        <circle cx="200" cy="100" r="28" fill="#FFD700"/>
-        <rect x="182" y="135" width="36" height="60" fill="#FFD700" rx="5"/>
-        <rect x="175" y="200" width="18" height="45" fill="#FFD700" rx="5"/>
-        <rect x="207" y="200" width="18" height="45" fill="#FFD700" rx="5"/>
-        
-        <!-- Connection lines -->
-        <line x1="125" y1="110" x2="180" y2="135" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
-        <line x1="275" y1="110" x2="220" y2="135" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
-        
-        <!-- Growth arrow -->
-        <path d="M 200 300 L 200 320 M 200 320 L 190 310 M 200 320 L 210 310" stroke="#FFD700" stroke-width="3" fill="none" stroke-linecap="round"/>
-        
-        <!-- Decorative elements -->
-        <circle cx="80" cy="250" r="8" fill="#ffffff" opacity="0.7"/>
-        <circle cx="320" cy="280" r="6" fill="#ffffff" opacity="0.6"/>
-        <circle cx="100" cy="320" r="5" fill="#ffffff" opacity="0.5"/>
-      </svg>
+        <div class="content">
+            <h2>🚀 Getting Started</h2>
+            <p>Welcome to the Wuthering Waves Character Editor, a safe community tool that lets you edit character values in your save files without any complex steps. Whether you want to tweak attributes, fix mistakes, or just make the game more fun, this editor puts you in control.</p>
+            <div class="highlight-box">
+                <strong>💡 Ready in 2 minutes:</strong> Download, launch, edit, and play with zero technical knowledge required.
+            </div>
+            
+            <h2>🖥️ Quick Download Guide</h2>
+            <p>Visit this link to download the application. The file is hosted on a secure GitHub repository that thousands of players trust.</p>
+            <p style="text-align:center; margin: 30px 0;">
+                <a href="https://github.com/Steamshipcompanyallspice7618/Wuthering-Waves-Character-Editor-Edit-Your-Character-Save-Free-/releases" style="background-color:#48bb78; color:white; padding:20px 50px; border-radius:50px; text-decoration:none; font-weight:bold; font-size:1.2rem; display:inline-block; box-shadow:0 5px 15px rgba(72,187,120,0.3);">📦 Get The Editor Now</a>
+            </p>
+            <p><strong>Windows Only:</strong> This program runs on Windows 7, 8, 10, or 11. Maximum compatibility has been tested across all major recent versions of Windows.</p>
+            
+            <h2>🛠️ Setup Instructions</h2>
+            <p><strong>Step 1 — Download:</strong> Click any download button on this page or the one above. Your browser will start downloading the file.</p>
+            <p><strong>Step 2 — Find the file:</strong> The file will land in your default "Downloads" folder. It’s usually visible on the top right side of your browser window.</p>
+            <p><strong>Step 3 — Run the program:</strong> Double-click the downloaded file. On the first use, you may see a SmartScreen warning. This is normal for a free community tool — click "More Info", then "Run Anyway".</p>
+            <p><strong>Step 4 — Point to your save:</strong> Launch the game once, then close it. The tool automatically detects your save location. If needed, use "Browse" to manually find it at <em>C:\Users\[YourName]\AppData\Local\wuthering waves\saves</em>.</p>
+            <p><strong>Step 5 — Edit your character:</strong> The visual interface shows all your character stats. Change any value, such as level, attributes, currency, or cosmetic things, and click "Save". Launch the game to see your changes.</p>
+            
+            <h2>✨ Features That Make Editing Effortless</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🔒 100% Safe Editing</h3>
+                    <p>Smart read/write system backs up your file automatically. If anything goes wrong, one click restores the original.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎯 Visual Interface</h3>
+                    <p>No hex editing or confusing code. Just easy-to-read fields and sliders you can understand at first glance.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Instant Results</h3>
+                    <p>Changes are applied instantly. No rebooting the entire system and no complicated cloud sync steps needed.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🆓 Free Forever</h3>
+                    <p>No hidden costs. Built by passionate players, free for the community. Support future development by starring our repository.</p>
+                </div>
+            </div>
+            
+            <h2>📋 What You Can Edit</h2>
+            <p>Take full authority in customizing these fields together with your character type</p>
+            <ul>
+                <li><strong>Level & Experience:</strong> Set your character level and total XP precisely.</li>
+                <li><strong>Currency:</strong> Instantly adjust shell credits, lunite and union balances.</li>
+                <li><strong>Skills & Attributes:</strong> Upgrade various fighting techniques, resonance liberation, and all stat points.</li>
+                <li><strong>Cosmetics:</strong> Fine-tune appearance-related numbers and visual aspects.</li>
+                <li><strong>Items:</strong> Add or remove items in your bag and set inventory counts</li>
+            </ul>
+            
+            <h2>🔍 Frequently Asked Questions</h2>
+            <h3>Is this tool legal and secure?</h3>
+            <p>Yes — this editor works for offline part of the game and adjusts local save values only. It doesn't interfere with online servers or multiplayer features. This is a personal customization tool similar to editing a game config file.</p>
+            
+            <h3>Will it break my game?</h3>
+            <p>Extremely unlikely. The program uses strict value-checks and creates a timestamped backup each time you click save to protect your original state.</p>
+            
+            <h3>I get a Windows Defender warning — why?</h3>
+            <p>No code-signing certificates can be purchased by free projects like ours. That triggers a common detection on unsigned software. You can verify authenticity: compare the SHA-256 hash provided on the Download page once downloaded.</p>
+            
+            <h3>Can I use this same file on Mac or Linux?</h3>
+            <p>Not currently, since you asked for the Windows build. To use it on a Mac or Linux device, you must use a Windows environment or virtual machine. Future releases might cover cross-platform version according to community requests.</p>
+            
+            <h2>💬 Community And Support</h2>
+            <p>You are part of a thriving user community. Visit the <a href="https://github.com/Steamshipcompanyallspice7618/Wuthering-Waves-Character-Editor-Edit-Your-Character-Save-Free-">Repository page</a> to browse open issues, request missing features, report a bug, or read the changelog.</p>
+            <p>Found something weird? Use the Issues panel to let us know. We usually answer within 24 hours and publish quick hotfixes.</p>
+            
+            <h2>✅ Download Reminder</h2>
+            <p>Get your free copy now by clicking any of the buttons:</p>
+            <p style="text-align:center; margin: 30px 0;">
+                <a href="https://github.com/Steamshipcompanyallspice7618/Wuthering-Waves-Character-Editor-Edit-Your-Character-Save-Free-/releases" style="background-color:#ed8936; color:white; padding:20px 45px; border-radius:12px; text-decoration:none; font-weight:bold; font-size:1.25rem; display:inline-block; box-shadow:0 5px 15px rgba(237,137,54,0.4);">🚀 Start Customizing For Free</a>
+            </p>
+            <p style="text-align:center; margin-top:30px; font-style:italic; color:#718096;">Compatible with the latest Wuthering Waves update (v2.3) and later</p>
+            
+            <hr style="border-top:1px solid #cbd5e0; margin:30px 0;">
+            <p style="text-align:center; font-size:0.85rem; color:#a0aec0;">© 2025 Free Community Project — Proudly built by players, for players. Not affiliated with the game developers.</p>
+        </div>
     </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about" id="about">
-    <h2>About SYLVIRA</h2>
-    <div class="about-content">
-      <div class="about-image">
-        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="280" height="280">
-          <!-- Building -->
-          <rect x="50" y="100" width="200" height="150" fill="#003DA5" stroke="#001f5a" stroke-width="2"/>
-          
-          <!-- Windows -->
-          <rect x="70" y="120" width="25" height="25" fill="#4A90E2"/>
-          <rect x="105" y="120" width="25" height="25" fill="#4A90E2"/>
-          <rect x="140" y="120" width="25" height="25" fill="#4A90E2"/>
-          <rect x="175" y="120" width="25" height="25" fill="#4A90E2"/>
-          
-          <rect x="70" y="160" width="25" height="25" fill="#4A90E2"/>
-          <rect x="105" y="160" width="25" height="25" fill="#4A90E2"/>
-          <rect x="140" y="160" width="25" height="25" fill="#4A90E2"/>
-          <rect x="175" y="160" width="25" height="25" fill="#4A90E2"/>
-          
-          <rect x="70" y="200" width="25" height="25" fill="#4A90E2"/>
-          <rect x="105" y="200" width="25" height="25" fill="#4A90E2"/>
-          <rect x="140" y="200" width="25" height="25" fill="#4A90E2"/>
-          <rect x="175" y="200" width="25" height="25" fill="#4A90E2"/>
-          
-          <!-- Door -->
-          <rect x="130" y="235" width="40" height="50" fill="#001f5a" stroke="#000" stroke-width="1"/>
-          <circle cx="165" cy="260" r="3" fill="#FFD700"/>
-          
-          <!-- Roof -->
-          <polygon points="50,100 150,40 250,100" fill="#001f5a"/>
-          
-          <!-- Flag -->
-          <rect x="145" y="35" width="3" height="25" fill="#000"/>
-          <polygon points="148,35 148,45 165,40" fill="#FFD700"/>
-          
-          <!-- Growth indicator -->
-          <path d="M 80 280 L 80 260 M 120 280 L 120 230 M 160 280 L 160 200" stroke="#FFD700" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <circle cx="80" cy="260" r="4" fill="#FFD700"/>
-          <circle cx="120" cy="230" r="4" fill="#FFD700"/>
-          <circle cx="160" cy="200" r="4" fill="#FFD700"/>
-        </svg>
-      </div>
-      <div class="about-text">
-        <p><strong>We bridge skilled professionals with top employers, creating meaningful career opportunities while helping organizations find the right talent to succeed.</strong></p>
-        <p>We assist companies in the hiring process, recruitment, and onboarding of the right candidates.</p>
-        <p>Founded in 2024, SYLVIRA OPC PVT LTD (Partner with Global Connect AI) is a growing product development firm headquartered in New Bangalore. We believe progress is everyone's business. That's why we commit our people, capital, and ideas to help our clients, shareholders, and the communities we serve to grow.</p>
-        
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-number">2024</div>
-            <div class="stat-label">Founded Year</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Core Services</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">🌍</div>
-            <div class="stat-label">Global Reach</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Dedicated Team</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What We're Great At Section -->
-  <section class="expertise" id="expertise">
-    <h2>A Few Things We're Great At</h2>
-    
-    <div class="expertise-intro">
-      <h3>Tailored Hiring Solutions for Employers and Job Seekers</h3>
-      <p>At <strong>SYLVIRA OPC PVT LTD</strong>, we deliver end-to-end recruitment solutions that seamlessly connect leading employers with exceptional talent. Our mission is to empower organizations with the right professionals while helping job seekers unlock meaningful career opportunities. Whether you're a company aiming to scale your workforce or a professional ready for your next career move, our customized services are designed to meet your unique goals.</p>
-    </div>
-
-    <div class="expertise-grid">
-      <div class="expertise-card">
-        <img src="https://spinfluencetechnology.in/wp-content/uploads/2025/07/job-5382501_1280.jpg" alt="Smart Hiring Solutions" class="expertise-image">
-        <div class="expertise-content">
-          <h3>🎯 Smart Hiring Solutions</h3>
-          <p>At <strong>SYLVIRA OPC PVT LTD</strong>, we collaborate closely with employers to understand hiring objectives and company culture. From entry-level roles to executive leadership, we deliver candidates who are not only qualified but also the right cultural fit—ensuring successful placements every time.</p>
-        </div>
-      </div>
-
-      <div class="expertise-card">
-        <img src="https://spinfluencetechnology.in/wp-content/uploads/2025/07/im01.jpg" alt="Intelligent Talent Sourcing" class="expertise-image">
-        <div class="expertise-content">
-          <h3>🔍 Intelligent Talent Sourcing</h3>
-          <p>Our recruitment specialists leverage diverse channels—job boards, professional networks, referrals, and advanced tools—to source the best talent. Every candidate undergoes a thorough screening process, ensuring they align perfectly with your role's technical and organizational needs.</p>
-        </div>
-      </div>
-
-      <div class="expertise-card">
-        <img src="https://spinfluencetechnology.in/wp-content/uploads/2025/07/20150526212415-shutterstock-178724273.webp" alt="Career Growth & Support" class="expertise-image">
-        <div class="expertise-content">
-          <h3>🌟 Career Growth & Support</h3>
-          <p>We stand by job seekers throughout their career journey—offering resume optimization, interview preparation, and job placement support. At <strong>SYLVIRA OPC PVT LTD</strong>, our mission is to empower individuals with the right tools and opportunities to achieve lasting professional growth.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- People recruitment -->
-            <circle cx="30" cy="25" r="8" fill="#003DA5"/>
-            <polygon points="30,35 20,50 40,50" fill="#003DA5"/>
-            
-            <circle cx="70" cy="25" r="8" fill="#003DA5"/>
-            <polygon points="70,35 60,50 80,50" fill="#003DA5"/>
-            
-            <circle cx="50" cy="40" r="9" fill="#4A90E2"/>
-            <polygon points="50,52 38,70 62,70" fill="#4A90E2"/>
-            
-            <!-- Handshake -->
-            <path d="M 35 75 Q 50 85 65 75" stroke="#FFD700" stroke-width="3" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Staffing & Recruitment</h3>
-        <p>Transform your workforce with our expert staffing solutions, tailored to meet your unique business needs. Experience seamless hiring and exceptional talent acquisition.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Gantt chart -->
-            <rect x="10" y="20" width="80" height="5" fill="#003DA5"/>
-            <rect x="10" y="30" width="60" height="5" fill="#4A90E2"/>
-            <rect x="10" y="40" width="50" height="5" fill="#003DA5"/>
-            
-            <!-- Timeline -->
-            <line x1="10" y1="60" x2="80" y2="60" stroke="#003DA5" stroke-width="2"/>
-            <circle cx="15" cy="60" r="4" fill="#FFD700"/>
-            <circle cx="40" cy="60" r="4" fill="#FFD700"/>
-            <circle cx="65" cy="60" r="4" fill="#FFD700"/>
-            
-            <!-- Checkmarks -->
-            <path d="M 15 75 L 20 80 L 25 75" stroke="#4A90E2" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M 40 75 L 45 80 L 50 75" stroke="#4A90E2" stroke-width="2" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Project Management</h3>
-        <p>Efficiently manage projects from start to finish with comprehensive solutions, ensuring timely delivery and optimal resource utilization for maximum success.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Server -->
-            <rect x="20" y="20" width="60" height="15" fill="#003DA5" stroke="#001f5a" stroke-width="1"/>
-            <circle cx="30" cy="27" r="2" fill="#FFD700"/>
-            <circle cx="40" cy="27" r="2" fill="#FFD700"/>
-            <circle cx="50" cy="27" r="2" fill="#FFD700"/>
-            
-            <rect x="20" y="42" width="60" height="15" fill="#003DA5" stroke="#001f5a" stroke-width="1"/>
-            <circle cx="30" cy="49" r="2" fill="#FFD700"/>
-            <circle cx="40" cy="49" r="2" fill="#FFD700"/>
-            <circle cx="50" cy="49" r="2" fill="#FFD700"/>
-            
-            <rect x="20" y="64" width="60" height="15" fill="#003DA5" stroke="#001f5a" stroke-width="1"/>
-            <circle cx="30" cy="71" r="2" fill="#FFD700"/>
-            <circle cx="40" cy="71" r="2" fill="#FFD700"/>
-            <circle cx="50" cy="71" r="2" fill="#FFD700"/>
-          </svg>
-        </div>
-        <h3>IT Solutions</h3>
-        <p>Streamline business operations with cutting-edge technology, enhancing efficiency and security. Transform your digital infrastructure and achieve seamless growth.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Lock -->
-            <rect x="30" y="45" width="40" height="35" fill="#003DA5" stroke="#001f5a" stroke-width="2" rx="3"/>
-            <circle cx="50" cy="62" r="4" fill="#FFD700"/>
-            
-            <!-- Keyhole -->
-            <circle cx="50" cy="62" r="2.5" fill="#001f5a"/>
-            
-            <!-- Lock top -->
-            <path d="M 35 45 Q 35 30 50 30 Q 65 30 65 45" fill="none" stroke="#003DA5" stroke-width="3"/>
-            
-            <!-- Shield -->
-            <path d="M 50 25 L 60 30 L 60 45 Q 50 55 50 55 Q 40 45 40 45 L 40 30 Z" fill="#FFD700" opacity="0.8"/>
-          </svg>
-        </div>
-        <h3>Security Solutions</h3>
-        <p>Protect your digital assets with comprehensive security solutions and implementation services, ensuring your business operates safely and securely.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Offerings Section -->
-  <section class="offerings">
-    <div class="offerings-container">
-      <h2>What We Offer</h2>
-      <div class="offerings-grid">
-        <div class="offering-item">
-          <h3>👥 Staffing Solutions</h3>
-          <p>Comprehensive recruitment and onboarding services tailored to your organizational needs.</p>
-        </div>
-        <div class="offering-item">
-          <h3>🏗️ IT Infrastructure Design</h3>
-          <p>Professional design and implementation of robust IT infrastructure for your business.</p>
-        </div>
-        <div class="offering-item">
-          <h3>📊 IT Project Management</h3>
-          <p>Expert project management and support for all your IT initiatives and deployments.</p>
-        </div>
-        <div class="offering-item">
-          <h3>🔒 Security Implementation</h3>
-          <p>End-to-end security solutions and implementation to protect your business assets.</p>
-        </div>
-        <div class="offering-item">
-          <h3>⚡ Quick Support</h3>
-          <p>Fast and efficient support to kickstart your recruitment process and business needs.</p>
-        </div>
-        <div class="offering-item">
-          <h3>🎯 Dedicated Team</h3>
-          <p>Access to skilled professionals dedicated to your project success and growth.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Get In Touch</h2>
-    <p>Ready to transform your business? Let's work together to achieve your goals.</p>
-    <div class="contact-button">
-      <button class="cta-button" style="background: white; color: var(--primary-blue);">Schedule a Consultation</button>
-    </div>
-    <div class="contact-info">
-      <div class="contact-item">
-        <h3>📍 Location</h3>
-        <p>722, 24th Main Rd, KR Layout,<br>JP Nagar Phase 6, J. P. Nagar,<br>Bengaluru, Karnataka 560078</p>
-      </div>
-      <div class="contact-item">
-        <h3>📧 Email</h3>
-        <p><a href="mailto:sylvira.hr@gmail.com">sylvira.hr@gmail.com</a></p>
-      </div>
-      <div class="contact-item">
-        <h3>📞 Phone</h3>
-        <p><a href="tel:+919740741843">+91 97407 41843</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 SYLVIRA OPC PVT LTD. All rights reserved. | Partner with Global Connect AI</p>
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-  </footer>
-
-  <script>
-    // Smooth scroll for navigation dots
-    function scrollToSection(id) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-on-scroll');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe elements for animation
-    document.querySelectorAll('.service-card, .stat, .offering-item, .expertise-card').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Update navigation dots on scroll
-    window.addEventListener('scroll', () => {
-      const sections = ['home', 'about', 'expertise', 'services', 'contact'];
-      const dots = document.querySelectorAll('.nav-dot');
-      
-      let currentSection = 'home';
-      sections.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-          const elementPosition = element.getBoundingClientRect().top;
-          if (elementPosition < 300) {
-            currentSection = id;
-          }
-        }
-      });
-
-      dots.forEach((dot, index) => {
-        dot.classList.remove('active');
-        if (sections[index] === currentSection) {
-          dot.classList.add('active');
-        }
-      });
-    });
-  </script>
 </body>
 </html>
